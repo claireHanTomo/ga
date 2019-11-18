@@ -4,6 +4,8 @@
 
 # Reference: https://en.wikipedia.org/wiki/Knapsack_problem
 
+import sys, random
+
 # constants
 MAX = 120
 BOX_WEIGHT = [20, 30, 60, 90, 50, 70, 30]
@@ -16,22 +18,25 @@ def initial():
 # Returns the sum of importance, returns 0 if the weight is greater than max weight
 def fitness(population):
 
-# Takes an array of genome and an array of total importance
-# Returns half of the array
-def cull(population, importance):
+# Takes a population
+# Returns a population with half size of the original population
+def random_select(population)
 
-# Takes an array of genome
-# Returns an array after cross-over the genome 
-def cross(population):
+# Takes two genomes
+# Returns a cross-over result of parents
+r cross-over the genome 
+def reproduce(mom, dad):
 
 
 # Takes an array of genome
 # Returns an array after mutation
-def mutation(population):
+def mutate(population):
 
-# Takes an array of sum of importance
-# Returns the index of the largest importance
-def best(sum_imp):
+# Returns true if fit enough or enough time has elapsed
+def enough()
+
+# Takes a population and return the best one of them
+def best(population):
 
 # Takes a genome
 # Print out what box we take based on the assignment in genome
@@ -39,38 +44,31 @@ def print_best(genome):
 
 
 # generates and search the best solution using genetic algorithm
-def ga():
-    print("Maximum weight of the Backpack: 120")
-    print("Weight(Importance) of Boxes: 20(6) 30(5) 60(8) 90(7) 50(6) 70(9) 30(4)")
-    print("finding the best solution using genetic algorithm...")
-    # generate initial population
-    pop = initial()
+def ga(population, fitness):
 
-    # generate an array to record the sum of importance for each one in population
-    sum_value = [None] * 10
+    while(!enough()):
+        new_population = [None] * 8
+        for i in range(8):
+            x = random_selection(population)
+            y = random_selection(population)
+            # result of the cross-over
+            child = reproduce(x, y)
+            num = random()
+            if num < 0.1:
+                child = mutate(child)
+                new_population.push(child)
+        population = new_population
 
-    for i in range():
-        # use fitness function to calculate the sum of importance for each one in population
-        for i in range(10):
-            sum_importance[i] = fitness(pop[i])
-
-        #cull half of them
-        cull_pop = cull(pop, sum_importance[i])
-
-        #cross-cover
-        cross_pop = cross(cull_pop)
-
-        #mutate the genomes
-        mutation_pop = mutation(cross_pop)
-
-        pop = mutation_pop
-
-    best_genome = pop[best(sum_importance)]
-
-    print_best(best_genome)
-
+    return best(population)
 
 
 #run program
-ga()
+print("Maximum weight of the Backpack: 120")
+print("Weight(Importance) of Boxes: 20(6) 30(5) 60(8) 90(7) 50(6) 70(9) 30(4)")
+print("finding the best solution using genetic algorithm...")
+
+# generate initial population
+population = initial()
+best_population = ga()
+print_best(best_population)
 
