@@ -226,7 +226,7 @@ def print_genome(genome):
 def ga(population):
 
     timer = 0;
-    while(timer < 100):
+    while(timer < 300):
         new_population = []
         for i in range(8):
             x = random_selection(population)
@@ -234,7 +234,7 @@ def ga(population):
             # result of the cross-over
             child = reproduce(x, y)
             num = random()
-            if num <= 0.1:
+            if num <= 0.2:
                 child = mutate(child)
                 # print ("mutation is happening!")
             new_population.append(child)
